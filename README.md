@@ -21,7 +21,7 @@ Ansible Collection for managing Uyuni / SUSE Manager installations and ressource
 
 - [`requires_reboot`](extensions/eda/plugins/event_source/requires_reboot.py) - Checks whether a particular system requires a reboot
 
-Check-out [issues](https://github.com/stdevel/ansible-collection-uyuni/issues) for known issues, missing and upcoming functionality.
+Check-out [issues](https://codeberg.org/stdevel/ansible-collection-uyuni/issues) for known issues, missing and upcoming functionality.
 
 ## Notes
 
@@ -29,4 +29,4 @@ When using SLES or SL(E) Micro for using this collection you will most likely ha
 
 ## Demonstration
 
-See [the following GitHub repository](https://github.com/stdevel/susecon-suma-aap-demo) for a demonstration of using this collection with AWX.
+See [the following Git repository](https://codeberg.org/stdevel/susecon-suma-aap-demo) for a demonstration of using this collection with AWX.
