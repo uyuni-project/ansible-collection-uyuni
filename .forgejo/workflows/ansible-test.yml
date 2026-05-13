@@ -30,7 +30,7 @@ jobs:
     needs:
       - ansible-lint
       - sanity
-    runs-on: ubuntu-latest
+    runs-on: homelab
     steps:
       - run: >-
           python -c "assert 'failure' not in
