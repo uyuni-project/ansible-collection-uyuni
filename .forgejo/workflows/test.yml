@@ -15,7 +15,16 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
-  ansible-test:
+  sanity-py311-ansible-220:
+    runs-on: homelab
+    container:
+      image: node:26-bookworm
+    steps:
+      - uses: https://code.forgejo.org/actions/checkout@v6
+      - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages tox-ansible
+      - run: /root/.local/bin/tox -e sanity-py3.11-2.20 --ansible
+
+  sanity-py313-ansible-220:
     runs-on: homelab
     container:
       image: node:26-trixie
