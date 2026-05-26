@@ -20,4 +20,4 @@ jobs:
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
       - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages ansible
-      - run: ansible-test
+      - run: /root/.local/bin/ansible-test
