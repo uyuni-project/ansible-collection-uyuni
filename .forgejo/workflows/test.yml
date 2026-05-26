@@ -14,12 +14,17 @@ on:
   schedule:
     - cron: '0 6 * * *'
 
+# ansible13/2.20
+# python 3.14, 3.13, 3.12, 3.11
+
 jobs:
-  ansible-test:
+  sanity-314:
     runs-on: homelab
+    container:
+      image: python:3.14-trixie
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
-      - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages ansible
+      - run: pip3 install ansible~=13
       - run: /root/.local/bin/ansible-galaxy collection build .
       - run: /root/.local/bin/ansible-galaxy collection install -p /tmp stdevel-uyuni*.tar.gz
       - run: cd /tmp/ansible_collections/stdevel/uyuni ; LANG=en_US.UTF-8 /root/.local/bin/ansible-test sanity ; LANG=en_US.UTF-8 /root/.local/bin/ansible-test env
