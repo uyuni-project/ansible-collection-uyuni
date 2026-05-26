@@ -18,7 +18,7 @@ jobs:
   ansible-test:
     runs-on: homelab
     container:
-      image: buildpack-deps:trixie
+      image: buildpack-deps:resolute
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
       - run: pip install ansible
