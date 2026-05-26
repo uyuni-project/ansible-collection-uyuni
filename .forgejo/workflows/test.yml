@@ -1,7 +1,7 @@
 ---
 name: Sanity checks
 
-#concurrency:
+# concurrency:
 #  group: ${{ github.head_ref || github.run_id }}
 #  cancel-in-progress: true
 
@@ -20,4 +20,6 @@ jobs:
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
       - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages ansible
-      - run: /root/.local/bin/ansible-test
+      - run: ansible-galaxy collection build .
+      - run: ansible-galaxy collection install -p /tmp stdevel-uyuni*.tar.gz ; cd /tmp/ansible_collections/stdevel/uyuni
+      - run: /root/.local/bin/ansible-test sanity
