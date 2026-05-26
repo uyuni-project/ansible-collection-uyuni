@@ -13,28 +13,11 @@ on:
   # This ensures that even if there haven't been commits that we are still testing against latest version of ansible-test for each ansible-base version
   schedule:
     - cron: '0 6 * * *'
-env:
-  NAMESPACE: stdevel
-  COLLECTION_NAME: uyuni
-  # ANSIBLE_TEST_PREFER_PODMAN: 1
 
 jobs:
   ansible-lint:
-    uses: stdevel/ansible-content-actions/.github/workflows/ansible_lint.yaml@main
-    with:
-      args: "--exclude .ansible/"
-  sanity:
-    uses: stdevel/ansible-content-actions/.github/workflows/sanity.yaml@main
-  all_green:
-    if: ${{ always() }}
-    needs:
-      - ansible-lint
-      - sanity
     runs-on: homelab
     steps:
-      - run: >-
-          python -c "assert 'failure' not in
-          set([
-          '${{ needs.sanity.result }}',
-          '${{ needs.ansible-lint.result }}'
-          ])"
+      - uses: https://code.forgejo.org/actions/checkout@v6
+      - run: apt-get update ; apt-get install -f ansible-test
+      - run: ansible-test
