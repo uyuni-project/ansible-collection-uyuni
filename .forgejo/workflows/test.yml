@@ -15,7 +15,7 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
-  ansible-lint:
+  ansible-test:
     runs-on: homelab
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
