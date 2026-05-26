@@ -22,4 +22,4 @@ jobs:
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
       - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages tox-ansible
-      - run: /root/.local/bin/tox -e sanity-py3.13-2.20 --ansible
+      - run: LANG=en_US.UTF-8 /root/.local/bin/tox -e sanity-py3.13-2.20 --ansible
