@@ -19,7 +19,5 @@ jobs:
     runs-on: homelab
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
-      - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages ansible
-      - run: /root/.local/bin/ansible-galaxy collection build .
-      - run: /root/.local/bin/ansible-galaxy collection install -p /tmp stdevel-uyuni*.tar.gz
-      - run: cd /tmp/ansible_collections/stdevel/uyuni ; LANG=en_US.UTF-8 /root/.local/bin/ansible-test sanity ; LANG=en_US.UTF-8 /root/.local/bin/ansible-test env
+      - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages tox-ansible
+      - run: /root/.local/bin/tox -e sanity-py3.11-2.20 --ansible
