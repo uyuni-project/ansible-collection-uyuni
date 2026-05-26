@@ -20,6 +20,6 @@ jobs:
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
       - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages ansible
-      - run: ansible-galaxy collection build .
-      - run: ansible-galaxy collection install -p /tmp stdevel-uyuni*.tar.gz ; cd /tmp/ansible_collections/stdevel/uyuni
+      - run: /root/.local/bin/ansible-galaxy collection build .
+      - run: /root/.local/bin/ansible-galaxy collection install -p /tmp stdevel-uyuni*.tar.gz ; cd /tmp/ansible_collections/stdevel/uyuni
       - run: /root/.local/bin/ansible-test sanity
