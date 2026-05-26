@@ -19,5 +19,5 @@ jobs:
     runs-on: homelab
     steps:
       - uses: https://code.forgejo.org/actions/checkout@v6
-      - run: apt-get update ; apt-get install -f python3-pip ; pip3 install --user ansible
+      - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user ansible
       - run: ansible-test
