@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0 (27.05.2026)
+
+- added `clp_promote` and `clp_version` modules for bumping and promoting CLP versions
+- migrated from GitHub to Codeberg (includes using Forgejo Actions and Renovate)
+- [server] mount volumes properly before installation
+- [server] fixed container registry information for openSUSE Leap and Leap Micro
+
 ## 0.3.6 (27.08.2025)
 
 - `server` - added variable `server_fqdn` to set a custom FQDN if `ansible_fqdn` doesn't work for you
