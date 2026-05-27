@@ -1,6 +1,6 @@
 # ansible-collection-uyuni
 
-Ansible Collection for managing Uyuni / SUSE Manager installations and ressources.
+Ansible Collection for managing Uyuni / SUSE Multi-Linux Manager installations and ressources.
 
 ## Roles
 
@@ -16,6 +16,8 @@ Ansible Collection for managing Uyuni / SUSE Manager installations and ressource
 - [`inventory`](plugins/inventory/inventory.py) - Dynamic inventory
 - [`openscap_run`](plugins/modules/openscap_run.py) - Schedules OpenSCAP runson managed hosts
 - [`reboot_host`](plugins/modules/reboot_host.py) - Reboots a managed hosts
+- [`clp_version`](plugins/modules/clp_version.py) - Create CLP version
+- [`clp_promote`](plugins/modules/clp_promote.py) - Promote CLP version
 
 ### Event-driven Ansible
 

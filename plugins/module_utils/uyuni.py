@@ -1427,3 +1427,59 @@ class UyuniAPIClient:
             raise SessionException(
                 f"Generic remote communication error: {err.faultString!r}"
             ) from err
+
+    def build_clp_version(self, label, message):
+        """
+        Builds a new Content Lifecycle Project version
+
+        :param label: CLP label
+        :type label: str
+        :param message: version message
+        :type message: str
+        """
+        try:
+            self._session.contentmanagement.buildProject(
+                self._api_key, label, message
+            )
+        except Fault as err:
+            if "fault 10101" in str(err).lower():
+                raise EmptySetException(
+                    f"CLP does not exist: {label!r}"
+                ) from err
+            if "does not exist" in err.faultString.lower():
+                raise EmptySetException(
+                    f"CLP does not exist: {label!r}"
+                ) from err
+            if "already in progress" in err.faultString.lower():
+                raise SessionException(
+                    f"CLP build already in progress: {label!r}"
+                ) from err
+            raise SessionException(
+                f"Generic remote communication error: {err.faultString!r}"
+            ) from err
+
+    def promote_clp(self, project_label, environment_label):
+        """
+        Promote a Content Lifecycle Project version
+
+        :param project_label: CLP label
+        :type project_label: str
+        :param environment_label: environment label
+        :type environment_label: str
+        """
+        try:
+            self._session.contentmanagement.promoteProject(
+                self._api_key, project_label, environment_label
+            )
+        except Fault as err:
+            if "does not exist" in err.faultString.lower():
+                raise EmptySetException(
+                    f"CLP or environment does not exist: {project_label!r}, {environment_label!r}"
+                ) from err
+            if "already in progress" in err.faultString.lower():
+                raise SessionException(
+                    f"CLP build already in progress: {project_label!r}, {environment_label!r}"
+                ) from err
+            raise SessionException(
+                f"Generic remote communication error: {err.faultString!r}"
+            ) from err
