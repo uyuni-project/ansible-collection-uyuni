@@ -7,8 +7,8 @@ proxy_pkgs:
   - uyuni-storage-setup-proxy
 
 proxy_gpg:
-  - "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Proxy-POOL-{{ ansible_architecture }}-Media1/repodata/repomd.xml.key"
+  - "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Proxy-POOL-{{ ansible_facts['architecture'] }}-Media1/repodata/repomd.xml.key"
 
 proxy_repos:
-  - url: "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Proxy-POOL-{{ ansible_architecture }}-Media1/"
+  - url: "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Proxy-POOL-{{ ansible_facts['architecture'] }}-Media1/"
     name: systemsmanagement_proxy_Stable_ContainerUtils

@@ -1,0 +1,4 @@
+FROM almalinux:9 AS almalinux
+RUN dnf install -y systemd sudo python3 podman iproute
+RUN echo 'root:root' | chpasswd
+CMD exec /sbin/init

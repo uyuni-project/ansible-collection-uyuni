@@ -1,6 +1,21 @@
 ---
 - name: Run role
-  hosts: localhost
-  remote_user: root
+  hosts: local-vm
+  become: true
+  pre_tasks:
+    - name: Set hostname
+      ansible.builtin.hostname:
+        name: mlm-proxy.local.loc
+
+    - name: Set hostname entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "^{{ ansible_facts['default_ipv4']['address'] }}"
+        line: "{{ ansible_facts['default_ipv4']['address'] }} mlm-proxy.local.loc mlm-proxy"
+
   roles:
-    - proxy
+    - role: proxy
+      proxy_scc_reg_code_os: "<insert SLES code here>"
+      proxy_scc_reg_code_mlm: "<insert MLM code here"
+      proxy_scc_mail: "<insert SCC mail here>"
+      proxy_config_file: /root/foo.bar

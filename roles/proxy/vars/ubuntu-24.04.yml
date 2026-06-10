@@ -1,0 +1,17 @@
+---
+proxy_requirements:
+  - podman
+  - parted
+  - xfsprogs
+  - rsync
+
+proxy_pkgs:
+  - mgrpxy
+  - uyuni-storage-setup-proxy
+  - netavark
+
+proxy_repos:
+  - url: https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/Ubuntu_24.04
+    name: systemsmanagement_Uyuni_Stable_ContainerUtils
+    gpg: https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/Ubuntu_24.04/Release.key
+    suites: ./

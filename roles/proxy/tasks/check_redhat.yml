@@ -1,0 +1,13 @@
+---
+- name: Ensure having proper architecture
+  ansible.builtin.fail:
+    msg: "Uyuni only supports x86_64 for Enterprise Linux"
+  when:
+    - ansible_facts['architecture'] != "x86_64"
+
+- name: Ensure having Enterprise Linux 9
+  ansible.builtin.fail:
+    msg: "Please upgrade to EL9"
+  when:
+    - ansible_facts['distribution'] | lower == "redhat"
+    - "ansible_facts['distribution_version'] is version('9', '!=')"

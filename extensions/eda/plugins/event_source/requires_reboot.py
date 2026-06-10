@@ -4,7 +4,7 @@ requires_reboot.py
 ansible-rulebook event source plugin that lists all hosts that require a reboot.
 
 Arguments:
-  - hostname: SUSE Manager/Uyuni hostname or IP address
+  - hostname: SUSE Multi-Linux Manager/Uyuni hostname or IP address
   - username: API username
   - password: API password
   - delay: seconds to wait between events

@@ -1,5 +1,13 @@
 ---
-- name: Install requirements
-  community.general.zypper:
+- name: Install requirements (Debian-like)
+  ansible.builtin.apt:
     name: "{{ proxy_requirements }}"
+    update_cache: true
+  when: ansible_facts['os_family'] | lower == "debian"
+  become: true
+
+- name: Install requirements
+  ansible.builtin.package:
+    name: "{{ proxy_requirements }}"
+  when: ansible_facts['os_family'] | lower != "debian"
   become: true

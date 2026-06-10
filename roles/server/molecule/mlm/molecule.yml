@@ -4,22 +4,20 @@ dependency:
   options:
     requirements-file: requirements.yml
 driver:
-  name: default
   options:
     managed: false
-    login_cmd_template: 'ssh root@{instance}'
+    login_cmd_template: "podman exec -ti {instance} bash"
     ansible_connection_options:
-      ansible_connection: ssh
-      ansible_user: root
+      ansible_connection: podman
 lint: |
-    yamllint .
-    ansible-lint
-    flake8
+  yamllint .
+  ansible-lint
+  flake8
 platforms:
-  - name: instance
-    hostname: <ip-address>
-    address: <ip-address>
-    user: root
+  - name: sles
+    image: sles-157-mlm
+    privileged: true
+    command: /sbin/init
 verifier:
   name: testinfra
   directory: ../default/tests

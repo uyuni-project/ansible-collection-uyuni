@@ -1,0 +1,24 @@
+---
+# packages
+server_pkgs:
+  - mgradm
+  - mgrctl
+  - netavark
+  - uyuni-storage-setup-server
+
+# Uyuni configuration
+server_org_name: "Demo"
+server_org_login: "admin"
+server_org_password: "admin"
+
+# monitoring settings
+server_enable_monitoring: true
+
+# content settings
+# server_channels:
+#   - name: almalinux9
+#     arch: x86_64
+#   - name: almalinux9-appstream
+#     arch: x86_64
+#   - name: almalinux9-uyuni-client
+#     arch: x86_64

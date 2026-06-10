@@ -1,4 +1,4 @@
 ---
-client_bootstrap_filename: "bootstrap-{{ ansible_distribution | regex_replace(' ', '_') | lower }}{{ ansible_distribution_version }}.sh"
+client_bootstrap_filename: "bootstrap-{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}{{ ansible_facts['distribution_version'] }}.sh"
 client_bootstrap_folder: /opt
 client_state: present

@@ -9,38 +9,28 @@
 - name: Register system
   ansible.builtin.command: "suseconnect --url {{ server_scc_url }} -r {{ server_scc_reg_code_os | upper }} -e {{ server_scc_mail }}"
   when:
-    - server_scc_check_registration
-    - server_scc_reg_code_os
+    - server_scc_check_registration | bool
+    - server_scc_reg_code_os is defined
     - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
   vars:
     query_filter: "[?identifier == 'SLES'].status"
-  become: true
-
-- name: Register MLM
-  ansible.builtin.command: "suseconnect --url {{ server_scc_url }} -p SUSE-Manager-Server/{{ server_suma_release }}/{{ ansible_architecture }} -r {{ server_scc_reg_code_mlm | upper }} -e {{ server_scc_mail }}"
-  when:
-    - server_scc_check_registration
-    - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
-  vars:
-    query_filter: "[?identifier == 'SUSE-Manager-Server'].status"
   become: true
 
 - name: Enable modules
   ansible.builtin.command: "suseconnect --url {{ server_scc_url }} -p {{ item.identifier }}"
   loop: "{{ server_suma_modules }}"
   when:
-    - server_scc_check_modules
+    - server_scc_check_modules | bool
     - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
   vars:
     query_filter: "[?identifier == '{{ item.name }}'].status"
   become: true
 
-- name: Set default image name
-  ansible.builtin.set_fact:
-    server_image_name: registry.suse.com/suse/manager/5.0/{{ ansible_architecture }}/server
-  when: server_suma_release is not defined
-
-- name: Set default image name (release-specific)
-  ansible.builtin.set_fact:
-    server_image_name: registry.suse.com/suse/manager/{{ server_suma_release }}/{{ ansible_architecture }}/server
-  when: server_suma_release is defined
+- name: Register MLM
+  ansible.builtin.command: "suseconnect --url {{ server_scc_url }} -p Multi-Linux-Manager-Server-SLE/{{ server_suma_release }}/{{ ansible_facts['architecture'] }} -r {{ server_scc_reg_code_mlm | upper }} -e {{ server_scc_mail }}"
+  when:
+    - server_scc_check_registration | bool
+    - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
+  vars:
+    query_filter: "[?identifier == 'Multi-Linux-Manager-Server'].status"
+  become: true

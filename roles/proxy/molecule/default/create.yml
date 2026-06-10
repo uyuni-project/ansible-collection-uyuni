@@ -14,7 +14,7 @@
     - name: Create a container
       containers.podman.podman_container:
         name: "{{ item.name }}"
-        hostname: uyuni.podman.loc
+        hostname: uyuni-proxy.podman.loc
         image: "{{ item.image }}"
         privileged: "{{ item.privileged | default(omit) }}"
         volumes: "{{ item.volumes | default(omit) }}"
@@ -26,7 +26,8 @@
         log_driver: json-file
         ports:
           - '8443:443'
-          - '8080:80'
+          - '8505:4505'
+          - '8506:4506'
       register: result
       loop: "{{ molecule_yml.platforms }}"
 

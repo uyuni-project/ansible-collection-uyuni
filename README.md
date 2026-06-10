@@ -4,8 +4,9 @@ Ansible Collection for managing Uyuni / SUSE Multi-Linux Manager installations a
 
 ## Roles
 
-- [`server`](roles/server) - Prepares, installs and configures Uyuni or SUSE Manager
-- [`client`](roles/client) - Bootstraps Uyuni or SUSE Manager clients
+- [`server`](roles/server) - Prepares, installs and configures Uyuni or SUSE Multi-Linux Manager server
+- [`client`](roles/client) - Bootstraps Uyuni or SUSE Multi-Linux Manager clients
+- [`proxy`](roles/proxy) - Prepares, installs and configures Uyuni or SUSE Multi-Linux Manager Proxy server
 
 ## Plugins
 

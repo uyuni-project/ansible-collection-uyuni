@@ -1,0 +1,19 @@
+---
+server_requirements:
+  - podman
+  - parted
+  - xfsprogs
+  - rsync
+
+server_pkgs:
+  - mgradm
+  - mgrctl
+  - netavark
+  - uyuni-storage-setup-server
+
+server_gpg:
+  - https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/EL_9/repodata/repomd.xml.key
+
+server_repos:
+  - url: https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/EL_9/
+    name: systemsmanagement_Uyuni_Stable_ContainerUtils

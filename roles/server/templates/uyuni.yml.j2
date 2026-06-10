@@ -1,6 +1,38 @@
 # Image settings
-image: {{ server_image_name }}
-tag: latest
+{% if ansible_facts['os_family'] | lower == "debian" %}
+registry:
+  host: registry.opensuse.org
+{% endif %}
+{% if server_release is defined %}
+{% if server_image_name_server is defined %}
+image: {{ server_image_name_server }}
+{% endif %}
+
+{% if server_image_name_database is defined %}
+pgsql:
+  image: {{ server_image_name_database }}
+{% endif %}
+
+{% if server_image_name_coco is defined %}
+coco:
+  image: {{ server_image_name_coco }}
+{% endif %}
+
+{% if server_image_name_hubxmlrpc is defined %}
+hubxmlrpc:
+  image: {{ server_image_name_hubxmlrpc }}
+{% endif %}
+
+{% if server_image_name_saline is defined %}
+saline:
+  image: {{ server_image_name_saline }}
+{% endif %}
+
+{% if server_image_name_tftpd is defined %}
+tftpd:
+  image: {{ server_image_name_tftpd }}
+{% endif %}
+{% endif %}
 
 # SSL settings
 ssl:

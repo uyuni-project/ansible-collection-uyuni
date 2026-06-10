@@ -2,8 +2,9 @@
 - name: Reboot system (if immutable)
   ansible.builtin.reboot:
     reboot_timeout: 3600
+    post_reboot_delay: 30
   changed_when: false
-  when: ansible_distribution | lower in ['opensuse microos', 'opensuse leap micro', 'opensuse slowroll', 'sle micro']
+  when: ansible_distribution | lower in ['opensuse microos', 'opensuse leap micro', 'opensuse slowroll', 'sle micro', 'sl-micro']
   become: true
 
 - name: Create initialization file

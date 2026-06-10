@@ -1,5 +1,6 @@
 ---
 # check requirements
+server_allow_unsupported_distributions: false
 server_check_requirements: true
 
 # required core packages
@@ -12,7 +13,7 @@ server_packages: []
 #   - spacewalk-utils
 #   - spacecmd
 
-server_suma_release: 5.0
+server_suma_release: 5.1
 
 server_scc_url: https://scc.suse.com
 server_scc_check_registration: true
@@ -40,19 +41,6 @@ server_org_last_name: "Administrator"
 # additional settings
 server_use_repo: true
 server_suma_airgapped: false
-
-# firewall settings
-server_firewall_config: true
-server_firewall_default_zone: internal
-server_firewall_services:
-  - suse-manager-server
-server_firewall_ports: []
-server_firewall_ports_monitoring:
-  - 5556/tcp
-  - 5557/tcp
-  - 9100/tcp
-  - 9187/tcp
-  - 9800/tcp
 
 # content settings
 server_channels: []

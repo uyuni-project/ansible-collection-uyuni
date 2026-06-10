@@ -1,6 +1,6 @@
 # proxy
 
-This role prepares, installs and configures [Uyuni](https://uyuni-project.org) and [SUSE Multi-Linux Manager](https://www.suse.com/products/multi-linux-manager/) proxy server.
+This role prepares, installs and configures [Uyuni](https://uyuni-project.org) and [SUSE Multi-Linux Manager](https://www.suse.com/products/multi-linux-manager/) proxy servers.
 
 ## Requirements
 
@@ -10,13 +10,22 @@ The system needs access to the internet. Also, you will need one of the followin
 
 | Product | Distributions |
 | ------- | ------------- |
-| Uyuni | openSUSE Tumbleweed, Leap 15.x, Leap Micro 6.x |
-| Multi-Linux Manager | SL Micro 5.5, SLES 15 SP7 | 
+| Uyuni | openSUSE Tumbleweed, Leap 16.x, Leap Micro 6.x |
+| Multi-Linux Manager 5.1 | SL Micro 6.1, SLES 15 SP7 |
+
+When setting the variable `server_allow_unsupported_distributions` to `true`, the following additional Linux distributions can be used for Uyuni:
+
+- Debian 13
+- RHEL 9 and compatible downstreams (AlmaLinux, Rocky Linux, Oracle Linux)
+- Ubuntu 24.04
+
+**NOTE**: The Uyuni project won't test against these distributions, the functionalty is provided as-is without any guarantee.
 
 ## Role Variables
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
+| `proxy_allow_unsupported_distributions` | `false` | Allow unsupported distributions (see above) |
 | `proxy_disk` | - | Dedicated disk for volume |
 | `proxy_config_file` | - | Proxy configuration tarball (**required**) |
 | `proxy_uyuni_release`, `proxy_suma_release` | - | Specific release |
@@ -86,6 +95,21 @@ SUSE Multi-Linux Manager requires a dedicated container image:
 
 ```command
 $ podman build -t sles-157-mlm -f Containerfile.sles
+```
+
+For testing unsupported Linux distributions (see above), dedicated Containerfiles and scenarios have been prepared:
+
+| Containerfile | Image name | Scenario | Description |
+| ------------- | ---------- | -------- | ----------- |
+| [`Containerfile.almalinux`](Containerfile.almalinux) | `almalinux9-uyuni` | `almalinux` | AlmaLinux 9 |
+| [`Containerfile.debian`](Containerfile.debian) | `debian13-uyuni` | `debian` | Debian 13 (Trixie) |
+| [`Containerfile.ubuntu`](Containerfile.ubuntu) | `ubuntu2404-uyuni` | `ubuntu` | Ubuntu LTS 24.04 (Noble Numbat) |
+
+```command
+$ podman build -t almalinux9-uyuni -f Containerfile.almalinux
+$ molecule create --scenario-name almalinux
+$ molecule converge --scenario-name almalinux
+$ molecule verify --scenario-name almalinux
 ```
 
 ## License

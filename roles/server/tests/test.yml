@@ -1,7 +1,19 @@
 ---
 - name: Run role
-  hosts: localhost
-  remote_user: root
+  hosts: local-vm
+  become: true
+  pre_tasks:
+    - name: Set hostname
+      ansible.builtin.hostname:
+        name: mlm.local.loc
+
+    - name: Set hostname entry
+      ansible.builtin.lineinfile:
+        path: /etc/hosts
+        search_string: "^{{ ansible_facts['default_ipv4']['address'] }}"
+        line: "{{ ansible_facts['default_ipv4']['address'] }} mlm.local.loc mlm"
+
   roles:
-    - role: stdevel.uyuni.server
-      use_lvm: false
+    - role: server
+      server_scc_reg_code_mlm: "TODO"
+      server_scc_mail: "TODO"

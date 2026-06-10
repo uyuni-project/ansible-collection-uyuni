@@ -1,13 +1,6 @@
 ---
 - name: Ensure having proper architecture
   ansible.builtin.fail:
-    msg: "Uyuni only supports x86_64 and aarch64"
+    msg: "Uyuni only supports x86_64 and aarch64 for openSUSE"
   when:
-    - ansible_architecture not in ['x86_64', 'aarch64']
-
-- name: Ensure having Uyuni release equal/greater than 2024.03
-  ansible.builtin.fail:
-    msg: "Uyuni releases older than 2024.03 are unsupported - use an older version of this collection"
-  when:
-    - server_release is defined
-    - "server_release is version('2024.03', '<=')"
+    - ansible_facts['architecture'] not in ['x86_64', 'aarch64']

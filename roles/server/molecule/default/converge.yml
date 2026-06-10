@@ -17,5 +17,4 @@
       #     arch: x86_64
       #   - name: almalinux9-uyuni-client
       #     arch: x86_64
-      # # server_release: '2023.03'
-      # server_firewall_config: true
+      # server_release: '2026.01'

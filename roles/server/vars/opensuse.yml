@@ -9,8 +9,8 @@ server_pkgs:
   - uyuni-storage-setup-server
 
 server_gpg:
-  - "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Server-POOL-{{ ansible_architecture }}-Media1/repodata/repomd.xml.key"
+  - "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Server-POOL-{{ ansible_facts['architecture'] }}-Media1/repodata/repomd.xml.key"
 
 server_repos:
-  - url: "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Server-POOL-{{ ansible_architecture }}-Media1/"
+  - url: "https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable/images/repo/Uyuni-Server-POOL-{{ ansible_facts['architecture'] }}-Media1/"
     name: systemsmanagement_Uyuni_Stable_ContainerUtils

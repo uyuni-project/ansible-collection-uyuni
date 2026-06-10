@@ -1,0 +1,20 @@
+---
+- name: Ensure having proper architecture
+  ansible.builtin.fail:
+    msg: "Uyuni only supports x86_64 and aarch64"
+  when:
+    - ansible_facts['architecture'] not in ['x86_64', 'aarch64']
+
+- name: Ensure having at least Debian 13
+  ansible.builtin.fail:
+    msg: "Please upgrade to Debian 13 or newer"
+  when:
+    - ansible_facts['distribution'] | lower == "debian"
+    - "ansible_facts['distribution_version'] is version('13', '<')"
+
+- name: Ensure having at least Ubuntu LTS 24.04
+  ansible.builtin.fail:
+    msg: "Please upgrade to Ubuntu LTS 24.04 or newer"
+  when:
+    - ansible_facts['distribution'] | lower == "ubuntu"
+    - "ansible_facts['distribution_version'] is version('24.04', '<')"

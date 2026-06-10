@@ -1,0 +1,7 @@
+---
+proxy_requirements:
+  - podman
+
+proxy_pkgs:
+  - mgrpxy
+  - mgrpxy-bash-completion

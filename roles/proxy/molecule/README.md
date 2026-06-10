@@ -15,15 +15,15 @@ Ensure to the following installed:
 The test environment consists of two test scenarios:
 
 - `default` - default scenario with a container running openSUSE Tumbleweed
-- `mlm` - SUSE Manager 5.0 scenario with VM running SLE Micro 5.5
+- `mlm` - SUSE Multi-Linux Manager 5.1 scenario with container running SLE 15 SP7
 
 ### SUSE hints
 
-In order to run tests against SUSE Manager 5.x you will either require a valid subscription or a trial license.
+In order to run tests against SUSE Multi-Linux Manager 5.x you will either require a valid subscription or a trial license.
 You can request a [60-day trial on the SUSE website.](https://www.suse.com/products/suse-manager/download/)
 For this, you will need to create a [SUSE Customer Center](https://scc.suse.com) account - you will **not** be able to request an additional trial for the same release after the 60 days have expired.
 
-**NOTE:** You will need to setup this VM manually, set the IP address in [`molecule.yml`](molecule.yml) and add an `/etc/hosts` entry with `instance`. This will change once Multi-Linux Manager 5.1 is released.
+**NOTE:** You will need to setup this VM manually, set the IP address in [`molecule.yml`](molecule.yml) and add an `/etc/hosts` entry with `instance`.
 
 ## Usage
 

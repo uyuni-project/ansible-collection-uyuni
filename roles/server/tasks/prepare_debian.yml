@@ -1,0 +1,10 @@
+---
+- name: Add Uyuni repositories
+  ansible.builtin.deb822_repository:
+    name: "{{ item.name }}"
+    types: deb
+    uris: "{{ item.url }}"
+    suites: "{{ item.suites }}"
+    signed_by: "{{ item.gpg }}"
+  loop: "{{ server_repos }}"
+  become: true

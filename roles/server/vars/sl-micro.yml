@@ -1,0 +1,10 @@
+---
+server_requirements:
+  - podman
+
+server_pkgs:
+  - mgradm
+  - mgrctl
+  - mgradm-bash-completion
+  - mgrctl-bash-completion
+  - netavark

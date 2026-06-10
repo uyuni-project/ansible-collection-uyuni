@@ -10,16 +10,24 @@ The system needs access to the internet. Also, you will need one of the followin
 
 | Product | Distributions |
 | ------- | ------------- |
-| Uyuni | openSUSE Tumbleweed, Leap 15.x, Leap Micro 6.x |
-| SUSE Manager 5.0 | SLE Micro 5.5, SLES 15 SP6 |
-| SUSE Multi-Linux Manager 5.1 | SL Micro 5.5, SLES 15 SP7 |
+| Uyuni | openSUSE Tumbleweed, Leap 16.x, Leap Micro 6.x |
+| SUSE Multi-Linux Manager 5.1 | SL Micro 6.1, SLES 15 SP7 |
+
+When setting the variable `server_allow_unsupported_distributions` to `true`, the following additional Linux distributions can be used for Uyuni:
+
+- Debian 13
+- RHEL 9 and compatible downstreams (AlmaLinux, Rocky Linux, Oracle Linux)
+- Ubuntu 24.04
+
+**NOTE**: The Uyuni project won't test against these distributions, the functionalty is provided as-is without any guarantee.
 
 ## Role Variables
 
 | Variable | Default | Description |
 | -------- | ------- | ----------- |
+| `server_allow_unsupported_distributions` | `false` | Allow unsupported distributions (see above) |
 | `server_check_requirements` | `true` | Check for hardware requirements |
-| `server_suma_release` | `5.0` | SUSE Multi-Linux Manager release to install |
+| `server_suma_release` | `5.1` | SUSE Multi-Linux Manager release to install |
 | `server_disk_volumes` | - | Dedicated disk for container volumes |
 | `server_disk_database` | - | Dedicated disk for database container volume |
 | `server_suma_airgapped` | `false` | Whether to get container image from RPM instead of online registry |
@@ -43,11 +51,11 @@ The system needs access to the internet. Also, you will need one of the followin
 | `server_org_login` | `admin` | Organization administrator username |
 | `server_org_password` | `admin` | Organization administrator password |
 | `server_org_mail` | `root@localhost` | Organization administrator mail |
-| `server_org_first_name`| `Anton` | Organization administrator first name |
-| `server_org_last_name`| `Administrator` | Organization administrator last name |
-| `server_channels`| *empty* | Common channels to synchronize (*e.g. `almalinux9` and `epel9`*) |
+| `server_org_first_name` | `Anton` | Organization administrator first name |
+| `server_org_last_name` | `Administrator` | Organization administrator last name |
+| `server_channels` | *empty* | Common channels to synchronize (*e.g. `almalinux9` and `epel9`*) |
 | `server_enable_monitoring` | `false` | Flag whether integrated monitoring stack should be enabled |
-| `server_fqdn` | - | Set custom FQDN if `ansible_fqdn` doesn't work for you |
+| `server_fqdn` | - | Set custom FQDN if `ansible_facts['fqdn']` doesn't work for you |
 
 When supplying channels to create in `channels`, ensure passing a list with dicts like this:
 
@@ -99,7 +107,7 @@ Don't forget setting SUSE-related variables when deploying SUSE Multi-Linux Mana
 - hosts: servers
   roles:
     - role: stdevel.uyuni.server
-      server_scc_reg_code:
+      server_scc_reg_code_mlm:
         - DERP1337LULZ
       server_scc_mail: bla@foo.bar
 ```
@@ -123,7 +131,7 @@ If you plan to bootstrap older Uyuni versions, set the Uyuni release:
   remote_user: root
   roles:
     - role: stdevel.uyuni.server
-      server_release: '2024.07'
+      server_release: '2026.01'
 ```
 
 ## Development
@@ -146,6 +154,21 @@ SUSE Multi-Linux Manager requires a dedicated container image:
 
 ```command
 $ podman build -t sles-157-mlm -f Containerfile.sles
+```
+
+For testing unsupported Linux distributions (see above), dedicated Containerfiles and scenarios have been prepared:
+
+| Containerfile | Image name | Scenario | Description |
+| ------------- | ---------- | -------- | ----------- |
+| [`Containerfile.almalinux`](Containerfile.almalinux) | `almalinux9-uyuni` | `almalinux` | AlmaLinux 9 |
+| [`Containerfile.debian`](Containerfile.debian) | `debian13-uyuni` | `debian` | Debian 13 (Trixie) |
+| [`Containerfile.ubuntu`](Containerfile.ubuntu) | `ubuntu2404-uyuni` | `ubuntu` | Ubuntu LTS 24.04 (Noble Numbat) |
+
+```command
+$ podman build -t almalinux9-uyuni -f Containerfile.almalinux
+$ molecule create --scenario-name almalinux
+$ molecule converge --scenario-name almalinux
+$ molecule verify --scenario-name almalinux
 ```
 
 ## License

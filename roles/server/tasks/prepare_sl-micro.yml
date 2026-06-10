@@ -1,0 +1,31 @@
+---
+- name: Check system registration
+  ansible.builtin.command: SUSEConnect --status
+  changed_when: false
+  register: server_scc_registration
+  when: server_scc_check_registration or server_scc_check_modules
+  become: true
+
+- name: Register system
+  ansible.builtin.command: "transactional-update --continue register --url {{ server_scc_url }} -r {{ server_scc_reg_code_mlm | upper }} -e {{ server_scc_mail }}"
+  when:
+    - server_scc_check_registration | bool
+    - server_scc_reg_code_mlm is defined
+    - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
+  vars:
+    query_filter: "[?identifier == 'SL-Micro'].status"
+  notify: Reboot system (if immutable)
+  become: true
+
+- name: Register MLM
+  ansible.builtin.command: "transactional-update --continue register --url {{ server_scc_url }} -p Multi-Linux-Manager-Server/{{ server_suma_release }}/{{ ansible_facts['architecture'] }} -r {{ server_scc_reg_code_mlm | upper }} -e {{ server_scc_mail }}"
+  when:
+    - server_scc_check_registration | bool
+    - 'server_scc_registration.stdout | from_json | json_query(query_filter) | join | lower != "registered"'
+  vars:
+    query_filter: "[?identifier == 'Multi-Linux-Manager-Server'].status"
+  notify: Reboot system (if immutable)
+  become: true
+
+- name: Trigger reboot (if necessary)
+  ansible.builtin.meta: flush_handlers

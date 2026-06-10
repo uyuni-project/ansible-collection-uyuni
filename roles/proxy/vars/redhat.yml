@@ -1,0 +1,18 @@
+---
+proxy_requirements:
+  - podman
+  - parted
+  - xfsprogs
+  - rsync
+
+proxy_pkgs:
+  - mgrpxy
+  - uyuni-storage-setup-proxy
+  - netavark
+
+proxy_gpg:
+  - https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/EL_9/repodata/repomd.xml.key
+
+proxy_repos:
+  - url: https://download.opensuse.org/repositories/systemsmanagement:/Uyuni:/Stable:/ContainerUtils/EL_9/
+    name: systemsmanagement_Uyuni_Stable_ContainerUtils

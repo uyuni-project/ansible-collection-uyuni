@@ -4,10 +4,11 @@
   vars:
     params:
       files:
-        - "{{ ansible_distribution | regex_replace(' ', '_') | lower }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution | regex_replace(' ', '_') | lower }}.yml"
-        - "{{ ansible_distribution | split(' ') | first | lower }}.yml"
-        - "{{ ansible_os_family | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_version'] }}.yml"
+        - "{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}.yml"
+        - "{{ ansible_facts['distribution'] | split(' ') | first | lower }}.yml"
+        - "{{ ansible_facts['os_family'] | lower }}.yml"
       paths:
         - vars
 
@@ -16,10 +17,11 @@
   vars:
     params:
       files:
-        - "check_{{ ansible_distribution | regex_replace(' ', '_') | lower }}-{{ ansible_distribution_version }}.yml"
-        - "check_{{ ansible_distribution | regex_replace(' ', '_') | lower }}.yml"
-        - "check_{{ ansible_distribution | split(' ') | first | lower }}.yml"
-        - "check_{{ ansible_os_family | lower }}.yml"
+        - "check_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "check_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_version'] }}.yml"
+        - "check_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}.yml"
+        - "check_{{ ansible_facts['distribution'] | split(' ') | first | lower }}.yml"
+        - "check_{{ ansible_facts['os_family'] | lower }}.yml"
       skip: true
       paths:
         - tasks
@@ -34,10 +36,11 @@
   vars:
     params:
       files:
-        - "prepare_{{ ansible_distribution | regex_replace(' ', '_') | lower }}-{{ ansible_distribution_version }}.yml"
-        - "prepare_{{ ansible_distribution | regex_replace(' ', '_') | lower }}.yml"
-        - "prepare_{{ ansible_distribution | split(' ') | first | lower }}.yml"
-        - "prepare_{{ ansible_os_family | lower }}.yml"
+        - "prepare_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_major_version'] }}.yml"
+        - "prepare_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}-{{ ansible_facts['distribution_version'] }}.yml"
+        - "prepare_{{ ansible_facts['distribution'] | regex_replace(' ', '_') | lower }}.yml"
+        - "prepare_{{ ansible_facts['distribution'] | split(' ') | first | lower }}.yml"
+        - "prepare_{{ ansible_facts['os_family'] | lower }}.yml"
       skip: true
       paths:
         - tasks

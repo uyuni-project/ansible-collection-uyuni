@@ -1,0 +1,15 @@
+---
+- name: Add GPG key
+  ansible.builtin.rpm_key:
+    key: "{{ item }}"
+  loop: "{{ proxy_gpg }}"
+  become: true
+
+- name: Add Uyuni repositories
+  ansible.builtin.yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.name }}"
+    baseurl: "{{ item.url }}"
+    gpgcheck: true
+  loop: "{{ proxy_repos }}"
+  become: true

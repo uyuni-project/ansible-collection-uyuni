@@ -1,0 +1,4 @@
+FROM debian:trixie AS trixie
+RUN apt-get update ; apt-get install -y systemd sudo python3 python3-debian podman iproute2
+RUN echo 'root:root' | chpasswd
+CMD exec /sbin/init

@@ -3,7 +3,7 @@ galaxy_info:
   role_name: server
   author: Christian Stankowic
   namespace: stdevel
-  description: Prepares, installs and configures Uyuni or SUSE Manager
+  description: Prepares, installs and configures Uyuni or SUSE Multi-Linux Manager
   issue_tracker_url: https://codeberg.org/stdevel/ansible-collection-uyuni/issues
   license: GPL-3.0-only
 

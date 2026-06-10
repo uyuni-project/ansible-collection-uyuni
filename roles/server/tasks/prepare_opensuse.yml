@@ -12,12 +12,29 @@
   loop: "{{ server_repos }}"
   become: true
 
-- name: Set default image name
+- name: Set default image names
   ansible.builtin.set_fact:
-    server_image_name: registry.opensuse.org/uyuni/server
+    server_image_name_server: registry.opensuse.org/uyuni/server
+    server_image_name_database: registry.opensuse.org/uyuni/server-postgresql
+    server_image_name_coco: registry.opensuse.org/uyuni/server-attestation
+    server_image_name_hubxmlrpc: registry.opensuse.org/uyuni/server-hub-xmlrpc-api
+    server_image_name_saline: registry.opensuse.org/uyuni/server-saline
+    server_image_name_tftpd: registry.opensuse.org/uyuni/proxy-tftpd
   when: server_release is not defined
 
-- name: Set default image name (release-specific)
+- name: Set default image name (release-specific, pre 2025.05)
   ansible.builtin.set_fact:
-    server_image_name: "registry.opensuse.org/uyuni/server:{{ server_release }}"
+    server_image_name_server: "registry.opensuse.org/uyuni/server:{{ server_release }}"
+  when:
+    - server_release is defined
+    - "server_release is version('2025.05', '<')"
+
+- name: Set default image names (release-specific)
+  ansible.builtin.set_fact:
+    server_image_name_server: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/server"
+    server_image_name_database: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/server-postgresql"
+    server_image_name_coco: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/server-attestation"
+    server_image_name_hubxmlrpc: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/server-hub-xmlrpc-api"
+    server_image_name_saline: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/server-saline"
+    server_image_name_tftpd: "registry.opensuse.org/systemsmanagement/uyuni/snapshots/{{ server_release }}/opensuse_tumbleweed/uyuni/proxy-tftpd"
   when: server_release is defined
