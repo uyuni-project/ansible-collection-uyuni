@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.5 (10.06.2026)
+
+- [proxy, server] added support for Debian 13, Ubuntu 24.04 and EL9 (issue #65)
+- [server] configuring storage is now idempotent (issue #62)
+- added support for SUSE Multi-Linux Manager 5.1
+- removed support for SUSE Manager 5.0 as it's reaching EOL
+- fixed linting for recent Ansible version
+- fixed various minor issues
+
 ## 0.4.0 (27.05.2026)
 
 - added `clp_promote` and `clp_version` modules for bumping and promoting CLP versions
