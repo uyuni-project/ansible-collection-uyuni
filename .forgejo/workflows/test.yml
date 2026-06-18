@@ -19,6 +19,6 @@ jobs:
     container:
       image: node:26-trixie
     steps:
-      - uses: https://code.forgejo.org/actions/checkout@v6
+      - uses: https://code.forgejo.org/actions/checkout@v7
       - run: apt-get update ; apt-get install -y python3-pip ; pip3 install --user --break-system-packages tox-ansible
       - run: /root/.local/bin/tox -e sanity-py3.13-2.20 --ansible
