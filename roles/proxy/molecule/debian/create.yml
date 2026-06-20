@@ -85,7 +85,7 @@
   tasks:
     - name: Check uname
       ansible.builtin.raw: uname -a
-      register: result
+      register: proxy_result
       changed_when: false
 
     - name: Display uname info
