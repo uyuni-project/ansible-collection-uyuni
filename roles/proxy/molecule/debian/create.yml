@@ -22,18 +22,17 @@
         systemd: "{{ item.systemd | default(omit) }}"
         state: started
         command: "{{ item.command | default('sleep 1d') }}"
-        # bash -c "while true; do sleep 10000; done"
         log_driver: json-file
         ports:
           - '8443:443'
           - '8505:4505'
           - '8506:4506'
-      register: result
+      register: proxy_result
       loop: "{{ molecule_yml.platforms }}"
 
     - name: Print some info
       ansible.builtin.debug:
-        msg: "{{ result.results }}"
+        msg: "{{ proxy_result.results }}"
 
     - name: Fail if container is not running
       when: >
@@ -41,7 +40,7 @@
         not item.container.State.Running
       ansible.builtin.include_tasks:
         file: tasks/create-fail.yml
-      loop: "{{ result.results }}"
+      loop: "{{ proxy_result.results }}"
       loop_control:
         label: "{{ item.container.Name }}"
 
@@ -55,6 +54,7 @@
                   "{{ item.name }}":
                     ansible_connection: containers.podman.podman
       ansible.builtin.set_fact:
+        # noqa: var-naming[no-role-prefix]
         molecule_inventory: >
           {{ molecule_inventory | combine(inventory_partial_yaml | from_yaml, recursive=true) }}
       loop: "{{ molecule_yml.platforms }}"
@@ -90,4 +90,4 @@
 
     - name: Display uname info
       ansible.builtin.debug:
-        msg: "{{ result.stdout }}"
+        msg: "{{ proxy_result.stdout }}"
