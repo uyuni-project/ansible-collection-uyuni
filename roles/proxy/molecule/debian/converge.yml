@@ -2,11 +2,6 @@
 - name: Converge machines
   hosts: all
   become: true
-  pre_tasks:
-    - name: Fix FQDN
-      ansible.builtin.set_fact:
-        ansible_fqdn: debian-proxy.podman.loc
-
   roles:
     - role: stdevel.uyuni.proxy
       proxy_allow_unsupported_distributions: true

@@ -24,7 +24,7 @@ Ansible Collection for managing Uyuni / SUSE Multi-Linux Manager installations a
 
 - [`requires_reboot`](extensions/eda/plugins/event_source/requires_reboot.py) - Checks whether a particular system requires a reboot
 
-Check-out [issues](https://codeberg.org/stdevel/ansible-collection-uyuni/issues) for known issues, missing and upcoming functionality.
+Check-out [issues](https://github.com/uyuni-project/ansible-collection-uyuni/issues) for known issues, missing and upcoming functionality.
 
 ## Notes
 
