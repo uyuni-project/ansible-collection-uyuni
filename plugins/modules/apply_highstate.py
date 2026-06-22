@@ -34,7 +34,7 @@ description:
 author:
   - "Christian Stankowic (@stdevel)"
 extends_documentation_fragment:
-  - stdevel.uyuni.uyuni_auth
+  - uyuni_project.uyuni.uyuni_auth
 options:
   name:
     description: Name or profile ID of the managed host
@@ -49,14 +49,14 @@ options:
 
 EXAMPLES = '''
 - name: Apply highstate
-  stdevel.uyuni.apply_highstate:
+  uyuni_project.uyuni.apply_highstate:
     uyuni_host: 192.168.1.1
     uyuni_user: admin
     uyuni_password: admin
     name: server.localdomain.loc
 
 - name: Simulate applying highstate
-  stdevel.uyuni.apply_highstate:
+  uyuni_project.uyuni.apply_highstate:
     uyuni_host: 192.168.1.1
     uyuni_user: admin
     uyuni_password: admin

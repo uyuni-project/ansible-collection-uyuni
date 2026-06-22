@@ -12,7 +12,7 @@
         msg: "Host to be rebooted: {{ ansible_eda.event.host }}"
 
     - name: Reboot system
-      stdevel.uyuni.reboot_host:
+      uyuni_project.uyuni.reboot_host:
         uyuni_host: 192.168.1.10
         uyuni_user: admin
         uyuni_password: admin

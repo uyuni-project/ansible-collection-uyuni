@@ -50,7 +50,7 @@
 - added **support for containerized setups** (SUMA 5.0+ and Uyuni 2024.10+)
   - openSUSE Tumbleweed, Slowroll, Leap, Leap Micro, SUSE Linux Enterprise Server and SUSE Linux Enterprise Micro/SUSE Linux Micro are supported installation targets
 - **Breaking change**: removed support for legacy installations (SUMA 4.x and Uyuni up to 2024.08)
-- **Breaking change**: removed Ansible role `stdevel.uyuni.storage` as it's not needed anymore for containerized setups
+- **Breaking change**: removed Ansible role `uyuni.storage` as it's not needed anymore for containerized setups
   - see variables `uyuni_disk_volumes` and `uyuni_disk_database`
 - `server`: added CPU architecture prerequisite check
 - `server`: removed CEFS support as CentOS 7 reached EOL
@@ -71,4 +71,4 @@
 
 - initial release
 - added dynamic inventory, `install_patches`, `install_upgrades`, `openscap_run` and `reboot_host` modules
-- splitted former `stdevel.uyuni` Ansible role in `stdevel.uyuni.storage` and `stdevel.uyuni.server` roles
+- splitted former `uyuni` Ansible role in `uyuni.storage` and `uyuni.server` roles

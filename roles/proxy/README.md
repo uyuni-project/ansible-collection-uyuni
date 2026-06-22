@@ -48,7 +48,7 @@ Refer to the following example:
 ---
 - hosts: prawwxy.giertz.loc
   roles:
-    - role: stdevel.uyuni.proxy
+    - role: uyuni_project.uyuni.proxy
       proxy_config_file: myproxy.tar.gz
 ```
 
@@ -58,7 +58,7 @@ Use a dedicated disk for the proxy cache:
 ---
 - hosts: darmstadt.hessen.loc
   roles:
-    - role: stdevel.uyuni.proxy
+    - role: uyuni_project.uyuni.proxy
       proxy_config_file: eigude.tar.gz
       proxy_disk: /dev/sdb
       proxy_uyuni_release: '2024.12'
@@ -69,7 +69,7 @@ Set SCC-related variables when installing a MLM proxy:
 ```yaml
 - hosts: enterprise.lega.cy
   roles:
-    - role: stdevel.uyuni.proxy
+    - role: uyuni_project.uyuni.proxy
       proxy_config_file: lvdg.mybiz.loc
       proxy_scc_reg_code_os: DERP1337LULZ
       proxy_scc_reg_code_mlm: RFL0815CPTR

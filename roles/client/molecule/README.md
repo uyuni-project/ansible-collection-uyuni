@@ -32,7 +32,7 @@ Edit [`default/converge.yml`](default/converge.yml) and enter a valid Uyuni serv
 ```yaml
 ...
   roles:
-    - role: stdevel.uyuni.client
+    - role: uyuni_project.uyuni.client
       client_uyuni_server: uyuni.evilcorp.lan
 ```
 

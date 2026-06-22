@@ -3,7 +3,7 @@
   hosts: all
   sources:
     - name: Match all messages
-      stdevel.uyuni.requires_reboot:
+      uyuni_project.uyuni.requires_reboot:
         hostname: 192.168.1.10
         username: admin
         password: admin
@@ -24,7 +24,7 @@
     #   condition: event.requires_reboot == True
     #   action:
     #     run_playbook:
-    #       name: stdevel.uyuni.reboot
+    #       name: uyuni_project.uyuni.reboot
     #       post_events: true
 
     - name: Show if hosts require a reboot (false)

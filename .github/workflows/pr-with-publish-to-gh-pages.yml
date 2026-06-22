@@ -22,6 +22,7 @@ jobs:
       artifact-upload: false
       init-lenient: false
       init-fail-on-error: true
+      collection-name: uyuni_project.uyuni
       build-ref: refs/pull/${{ github.event.number }}/merge
 
   # The build job runs with the most lenient settings to ensure the best chance of getting
@@ -34,6 +35,7 @@ jobs:
     with:
       init-lenient: true
       init-fail-on-error: false
+      collection-name: uyuni_project.uyuni
       render-file-line: '> * `$<status>` [$<path_tail>](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr/${{ github.event.number }}/$<path_tail>)'
 
   publish-docs-gh-pages:

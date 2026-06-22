@@ -3,4 +3,4 @@
   hosts: localhost
   remote_user: root
   roles:
-    - role: stdevel.uyuni.client
+    - role: uyuni_project.uyuni.client

@@ -3,7 +3,7 @@
   hosts: all
   become: true
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_scc_reg_code_os: "<insert SLES code here>"
       server_scc_reg_code_mlm: "<insert MLM code here"
       server_scc_mail: "<insert SCC mail here>"
