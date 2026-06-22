@@ -14,7 +14,7 @@ on:
     - cron: '0 6 * * *'
 
 env:
-  NAMESPACE: stdevel
+  NAMESPACE: uyuni_project
   COLLECTION_NAME: uyuni
   # ANSIBLE_TEST_PREFER_PODMAN: 1
 
