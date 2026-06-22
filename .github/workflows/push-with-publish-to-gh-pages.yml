@@ -21,6 +21,7 @@ jobs:
     with:
       init-lenient: false
       init-fail-on-error: true
+      collection-name: uyuni_project.uyuni
 
   publish-docs-gh-pages:
     # use to prevent running on forks
