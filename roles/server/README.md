@@ -81,7 +81,7 @@ Refer to the following example:
 ```yaml
 - hosts: servers
   roles:
-    - stdevel.uyuni.server
+    - uyuni_project.uyuni.server
 ```
 
 Set variables if required, e.g.:
@@ -91,7 +91,7 @@ Set variables if required, e.g.:
 - hosts: uyuni.giertz.loc
   remote_user: root
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_channels:
         - name: almalinux9
           arch: x86_64
@@ -106,7 +106,7 @@ Don't forget setting SUSE-related variables when deploying SUSE Multi-Linux Mana
 ```yaml
 - hosts: servers
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_scc_reg_code_mlm:
         - DERP1337LULZ
       server_scc_mail: bla@foo.bar
@@ -117,7 +117,7 @@ Installing Multi-Linux Manager on SLES requires an additional registration code 
 ```yaml
 - hosts: servers
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_scc_reg_code_os: DERP1337LULZ
       server_scc_reg_code_mlm: RFL0815CPTR
       server_scc_mail: meh@foo.baz
@@ -130,7 +130,7 @@ If you plan to bootstrap older Uyuni versions, set the Uyuni release:
 - hosts: retro.giertz.loc
   remote_user: root
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_release: '2026.01'
 ```
 

@@ -3,5 +3,5 @@
   hosts: all
   become: true
   roles:
-    - role: stdevel.uyuni.proxy
+    - role: uyuni_project.uyuni.proxy
       proxy_config_file: /root/foo.bar

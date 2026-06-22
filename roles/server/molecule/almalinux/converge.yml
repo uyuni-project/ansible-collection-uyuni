@@ -3,7 +3,7 @@
   hosts: all
   become: true
   roles:
-    - role: stdevel.uyuni.server
+    - role: uyuni_project.uyuni.server
       server_allow_unsupported_distributions: true
       server_enable_monitoring: true
       # server_channels:

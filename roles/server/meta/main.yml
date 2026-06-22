@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: server
   author: Christian Stankowic
-  namespace: stdevel
+  namespace: uyuni_project
   description: Prepares, installs and configures Uyuni or SUSE Multi-Linux Manager
   issue_tracker_url: https://github.com/uyuni-project/ansible-collection-uyuni/issues
   license: GPL-3.0-only

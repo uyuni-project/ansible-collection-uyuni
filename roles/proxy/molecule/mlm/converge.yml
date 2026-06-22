@@ -3,7 +3,7 @@
   hosts: all
   become: true
   roles:
-    - role: stdevel.uyuni.proxy
+    - role: uyuni_project.uyuni.proxy
       proxy_scc_reg_code_os: "<insert SLES code here>"
       proxy_scc_reg_code_mlm: "<insert MLM code here>"
       proxy_scc_mail: "<insert SCC mail here>"

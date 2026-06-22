@@ -34,7 +34,7 @@ description:
 author:
   - "Christian Stankowic (@stdevel)"
 extends_documentation_fragment:
-  - stdevel.uyuni.uyuni_auth
+  - uyuni_project.uyuni.uyuni_auth
 options:
   project_label:
     description: Label of the Content Lifecycle Project
@@ -48,7 +48,7 @@ options:
 
 EXAMPLES = '''
 - name: Promote CLP version
-  stdevel.uyuni.clp_promote:
+  uyuni_project.uyuni.clp_promote:
     uyuni_host: 192.168.1.1
     uyuni_user: admin
     uyuni_password: admin

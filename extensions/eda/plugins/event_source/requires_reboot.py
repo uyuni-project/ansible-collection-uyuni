@@ -12,7 +12,7 @@ Arguments:
 
 Examples:
   sources:
-    - stdevel.uyuni.requires_reboot:
+    - uyuni_project.uyuni.requires_reboot:
         hostname: uiuiuiuyuni.local.loc
         username: admin
         password: admin

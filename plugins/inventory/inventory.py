@@ -35,7 +35,7 @@ DOCUMENTATION = '''
         description: Name of the plugin.
         required: true
         type: string
-        choices: ['stdevel.uyuni.inventory']
+        choices: ['uyuni_project.uyuni.inventory']
       host:
         description:
           - Hostname/IP address of the Uyuni server.
@@ -97,7 +97,7 @@ DOCUMENTATION = '''
 EXAMPLES = r'''
 ---
 # my.uyuni.yml
-plugin: stdevel.uyuni.inventory
+plugin: uyuni_project.uyuni.inventory
 host: 192.168.180.1
 user: admin
 password: admin
@@ -112,7 +112,7 @@ groups:
 ---
 # for use in AWX / AAP (Inventory Source "Sourced from a Project"),
 # together with a custom credential that injects environment variables UYUNI_HOST, UYUNI_USER, UYUNI_PASSWORD
-plugin: stdevel.uyuni.inventory
+plugin: uyuni_project.uyuni.inventory
 show_custom_values: true
 ...
 '''
@@ -128,7 +128,7 @@ class InventoryModule(BaseInventoryPlugin, Constructable, Cacheable):
     Host inventory parser for ansible using Uyuni
     """
 
-    NAME = 'stdevel.uyuni.inventory'
+    NAME = 'uyuni_project.uyuni.inventory'
 
     def __init__(self):
         """

@@ -34,7 +34,7 @@ description:
 author:
   - "Christian Stankowic (@stdevel)"
 extends_documentation_fragment:
-  - stdevel.uyuni.uyuni_auth
+  - uyuni_project.uyuni.uyuni_auth
 options:
   name:
     description: Name or profile ID of the managed host
@@ -44,7 +44,7 @@ options:
 
 EXAMPLES = '''
 - name: Check if system requires reboot
-  stdevel.uyuni.is_reboot_required:
+  uyuni_project.uyuni.is_reboot_required:
     uyuni_host: 192.168.1.1
     uyuni_user: admin
     uyuni_password: admin

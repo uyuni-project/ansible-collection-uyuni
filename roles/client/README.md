@@ -28,7 +28,7 @@ Refer to the following example:
 ```yaml
 - hosts: clients
   roles:
-    - role: stdevel.uyuni.client
+    - role: uyuni_project.uyuni.client
       client_uyuni_server: uyuni01.evilcorp.lan
 ```
 
@@ -38,7 +38,7 @@ Set variables if required, e.g.:
 ---
 - hosts: clients
   roles:
-    - role: stdevel.uyuni.client
+    - role: uyuni_project.uyuni.client
       client_uyuni_server: uyuni01.evilcorp.lan
       client_bootstrap_filename: bootstrap-dummy.sh
       client_bootstrap_folder: /tmp
@@ -50,7 +50,7 @@ To remove `salt-minion` and managed software repositories, set `client_state` to
 ---
 - hosts: clients
   roles:
-    - role: stdevel.uyuni.client
+    - role: uyuni_project.uyuni.client
       client_state: absent
 ```
 
