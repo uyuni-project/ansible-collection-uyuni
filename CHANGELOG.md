@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.0 (25.06.2026)
+
+- first public version after Uyuni project rebranding
+- [GHA] automatically create docs and releases
+
 ## 0.4.5 (10.06.2026)
 
 - [proxy, server] added support for Debian 13, Ubuntu 24.04 and EL9 (issue #65)

@@ -1,7 +1,7 @@
 ---
 namespace: uyuni_project
 name: uyuni
-version: 0.4.5
+version: 0.5.0
 readme: README.md
 authors:
   - Christian Stankowic <info@cstan.io>
