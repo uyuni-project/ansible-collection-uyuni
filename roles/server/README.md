@@ -11,6 +11,7 @@ The system needs access to the internet. Also, you will need one of the followin
 | Product | Distributions |
 | ------- | ------------- |
 | Uyuni | openSUSE Tumbleweed, Leap 16.x, Leap Micro 6.x |
+| SUSE Multi-Linux Manager 5.2 | SL Micro 6.2, SLES 15 SP7 |
 | SUSE Multi-Linux Manager 5.1 | SL Micro 6.1, SLES 15 SP7 |
 
 When setting the variable `server_allow_unsupported_distributions` to `true`, the following additional Linux distributions can be used for Uyuni:
@@ -27,7 +28,7 @@ When setting the variable `server_allow_unsupported_distributions` to `true`, th
 | -------- | ------- | ----------- |
 | `server_allow_unsupported_distributions` | `false` | Allow unsupported distributions (see above) |
 | `server_check_requirements` | `true` | Check for hardware requirements |
-| `server_suma_release` | `5.1` | SUSE Multi-Linux Manager release to install |
+| `server_suma_release` | `5.2` | SUSE Multi-Linux Manager release to install |
 | `server_disk_volumes` | - | Dedicated disk for container volumes |
 | `server_disk_database` | - | Dedicated disk for database container volume |
 | `server_suma_airgapped` | `false` | Whether to get container image from RPM instead of online registry |
