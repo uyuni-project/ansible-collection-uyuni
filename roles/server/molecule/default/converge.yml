@@ -2,6 +2,11 @@
 - name: Converge machines
   hosts: all
   become: true
+  pre_tasks:
+    - name: Fix FQDN
+      ansible.builtin.hostname:
+        name: uyuni.podman.loc
+
   roles:
     - role: uyuni_project.uyuni.server
       server_enable_monitoring: true

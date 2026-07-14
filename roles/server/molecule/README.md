@@ -15,7 +15,7 @@ Ensure to the following installed:
 The test environment consists of two test scenarios:
 
 - `default` - default scenario with a container running openSUSE Tumbleweed
-- `mlm` - SUSE Multi-Linux Manager 5.1 scenario with container running SLE 15 SP7
+- `mlm` - SUSE Multi-Linux Manager 5.2 scenario with container running SLE 15 SP7
 
 ### SUSE hints
 

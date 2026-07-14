@@ -2,6 +2,11 @@
 - name: Converge machines
   hosts: all
   become: true
+  pre_tasks:
+    - name: Fix FQDN
+      ansible.builtin.hostname:
+        name: almalinux-proxy.podman.loc
+
   roles:
     - role: uyuni_project.uyuni.proxy
       proxy_allow_unsupported_distributions: true

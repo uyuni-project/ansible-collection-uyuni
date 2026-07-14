@@ -11,7 +11,8 @@ The system needs access to the internet. Also, you will need one of the followin
 | Product | Distributions |
 | ------- | ------------- |
 | Uyuni | openSUSE Tumbleweed, Leap 16.x, Leap Micro 6.x |
-| Multi-Linux Manager 5.1 | SL Micro 6.1, SLES 15 SP7 |
+| SUSE Multi-Linux Manager 5.2 | SL Micro 6.2, SLES 15 SP7 |
+| SUSE Multi-Linux Manager 5.1 | SL Micro 6.1, SLES 15 SP7 |
 
 When setting the variable `server_allow_unsupported_distributions` to `true`, the following additional Linux distributions can be used for Uyuni:
 

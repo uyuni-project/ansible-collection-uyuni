@@ -13,7 +13,7 @@ server_packages: []
 #   - spacewalk-utils
 #   - spacecmd
 
-server_suma_release: 5.1
+server_suma_release: 5.2
 
 server_scc_url: https://scc.suse.com
 server_scc_check_registration: true

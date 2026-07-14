@@ -14,5 +14,5 @@ proxy_scc_check_registration: true
 proxy_scc_check_modules: true
 
 # SUSE MLM-related settings
-proxy_suma_release: 5.1
+proxy_suma_release: 5.2
 proxy_suma_airgapped: false

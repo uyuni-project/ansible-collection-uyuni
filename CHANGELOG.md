@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 (15.07.2026)
+
+- added support for SUSE Multi-Linux Manager 5.2 (issue #11)
+
 ## 0.5.0 (25.06.2026)
 
 - first public version after Uyuni project rebranding
