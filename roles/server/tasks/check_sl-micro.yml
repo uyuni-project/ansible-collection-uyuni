@@ -12,6 +12,14 @@
     - server_suma_release is defined
     - "server_suma_release is version('5.1', '<')"
 
+- name: Ensure having supported SL Micro release for SUSE MLM 5.2
+  ansible.builtin.fail:
+    msg: "Please upgrade to SL Micro 6.2"
+  when:
+    - server_suma_release == 5.2
+    - ansible_facts['distribution_version'] != '6.2'
+
+
 - name: Ensure having supported SL Micro release for SUSE MLM 5.1
   ansible.builtin.fail:
     msg: "Please upgrade to SL Micro 6.1"
